@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sook's Packaging Power: Exponential Royalty Strategy</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load GSAP for High-Performance Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Colors defined here */
+        :root {
+            --caa-red: #C00030;
+            --sook-teal: #00A5A5;
+            --hot-pink: #FF69B4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Updated: Silver Gradient to Black */
+            background: linear-gradient(to bottom right, #bdbdbd 0%, #1a202c 100%);
+            color: #1f2937; /* Dark Gray for default body text */
+        }
+        .section-card {
+            /* Updated: Light gray background, black text */
+            background-color: #f3f4f6; /* Tailwind gray-100 equivalent */
+            color: #1f2937; /* Dark text */
+            border: 1px solid #d1d5db;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+        }
+        .sook-teal-text {
+            color: var(--sook-teal);
+        }
+        .caa-red-text {
+            color: var(--caa-red);
+        }
+        .hot-pink-text {
+            color: var(--hot-pink);
+        }
+        /* Custom CSS for the revenue bar container - Increased height to accurately show 25x difference */
+        .revenue-container {
+            height: 550px; 
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+            background-color: #374151; /* Darker interior for contrast */
+            border-radius: 0.5rem;
+        }
+        /* Bar colors defined in JS, but used here for initial style */
+        .bar-fixed-color { background-color: var(--caa-red); } /* CAA Red */
+        .bar-royalty-color { background-color: var(--sook-teal); } /* Sook Teal */
+    </style>
+</head>
+<body class="p-4 md:p-10 min-h-screen">
+
+    <div id="slide-container" class="max-w-6xl mx-auto rounded-xl overflow-hidden section-card p-6 md:p-10">
+
+        <!-- Header -->
+        <header class="text-center mb-10 border-b pb-4 border-gray-400">
+            <h1 class="text-3xl md:text-5xl font-extrabold sook-teal-text">
+                🎯 SOOK'S PACKAGING POWER: From Fixed Fee to <span class="hot-pink-text">Exponential Royalty</span>
+            </h1>
+            <p class="mt-2 text-lg text-gray-700">CAA's Blueprint for a 10x - 70x Revenue Multiplier</p>
+        </header>
+
+        <!-- 1. The Revenue Leverage Blueprint -->
+        <div class="mb-10">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">1. The Revenue Leverage Blueprint: Inputs Justify Project Value</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- CAA Card (Red Theme) -->
+                <div class="section-card p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-3 caa-red-text flex items-center">
+                        <img src="uploaded:image_76b680.png" alt="CAA Logo" class="w-8 h-8 mr-2 object-contain"> CAA's Analogy
+                    </h3>
+                    <p class="text-gray-800 mb-3">CAA supplied **multiple talent inputs** (Writer + Director + Star) to justify waiving commissions and charging a direct fee on the project's gross.</p>
+                    <ul class="text-sm list-disc list-inside text-gray-600 space-y-1">
+                        <li>**Input:** Multiple Commissions Waived</li>
+                        <li>**Output:** Fee on Project Value (3% Gross + 3% Backend)</li>
+                    </ul>
+                </div>
+                <!-- SOOK Card (Teal Theme) -->
+                <div class="section-card p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-3 sook-teal-text flex items-center">
+                        <img src="uploaded:Sook icon.gif" alt="Sook Logo" class="w-8 h-8 mr-2 object-contain rounded-lg"> SOOK's Strategy
+                    </h3>
+                    <p class="text-gray-800 mb-3">Sook supplies **multiple SAAS usage inputs** (tools, audience data) to package content, allowing us to demand a leveraged **Royalty on the Content License.**</p>
+                    <ul class="text-sm list-disc list-inside text-gray-600 space-y-1">
+                        <li>**Input:** Multiple SAAS Usage Inputs Supplied</li>
+                        <li>**Output:** Royalty on Project Value (Syndication License Fee)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. The Multiplier: Syndication Jackpot Visual -->
+        <div class="mb-10 border-t pt-8 border-gray-400">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">2. The Multiplier: Visualizing the <span class="hot-pink-text">10x - 70x</span> Syndication Jackpot</h2>
+
+            <div class="revenue-container relative">
+
+                <!-- The Bars and Numbers -->
+                <div class="flex h-full w-full justify-around items-end">
+                    
+                    <!-- Fixed Usage Bar (1x) -->
+                    <div class="flex flex-col items-center">
+                        <div id="bar-fixed" class="w-16 bar-fixed-color rounded-t-lg shadow-xl" style="height: 20px;"></div>
+                        <p class="mt-2 text-center text-sm caa-red-text font-semibold">Fixed Usage Fee (CAA Commission Analogue)</p>
+                        <p id="value-fixed" class="text-lg font-extrabold caa-red-text mt-1">$100K</p>
+                    </div>
+
+                    <!-- Royalty Bar (25x) -->
+                    <div class="flex flex-col items-center">
+                        <div id="bar-royalty" class="w-16 bar-royalty-color rounded-t-lg shadow-xl" style="height: 20px;"></div>
+                        <p class="mt-2 text-center text-sm sook-teal-text font-semibold">Syndication Royalty (SOOK Package Fee)</p>
+                        <p id="value-royalty" class="text-3xl font-extrabold sook-teal-text mt-1">$2.5M</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 3. Sook's Edge & Call to Action -->
+        <div class="mt-10 pt-4 border-t border-gray-400">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">3. Sook's Competitive Edge & Mandate</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <!-- MODIFIED: Teal Background, White/Hot Pink Text for legibility -->
+                <div class="p-4 rounded-lg bg-[var(--sook-teal)] text-white shadow-xl">
+                    <p class="text-4xl mb-2 text-white">💰</p>
+                    <p class="font-semibold text-lg text-white">Royalty-Free Content</p>
+                    <p class="text-sm text-gray-200">Maximizes our margin on the back end.</p>
+                </div>
+                <!-- MODIFIED: Teal Background, White/Hot Pink Text for legibility -->
+                <div class="p-4 rounded-lg bg-[var(--sook-teal)] text-white shadow-xl">
+                    <p class="text-4xl mb-2 hot-pink-text">🔥</p>
+                    <p class="font-semibold text-lg hot-pink-text">Built-In, Die-Hard Fans</p>
+                    <p class="text-sm text-gray-200">Guarantees demand for external distribution.</p>
+                </div>
+                <!-- MODIFIED: Teal Background, White/Hot Pink Text for legibility -->
+                <div class="p-4 rounded-lg bg-[var(--sook-teal)] text-white shadow-xl">
+                    <p class="text-4xl mb-2 text-white">🚀</p>
+                    <p class="font-semibold text-lg text-white">Active Syndication Control</p>
+                    <p class="text-sm text-gray-200">We drive the deals, we don't wait for them.</p>
+                </div>
+            </div>
+
+            <div class="mt-8 p-4 bg-gray-700 bg-opacity-80 rounded-lg text-center">
+                <p class="text-xl font-extrabold hot-pink-text">
+                    MANDATE: Prioritize content with high syndication potential and define our tiered royalty fee structure NOW.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const barFixed = document.getElementById('bar-fixed');
+            const barRoyalty = document.getElementById('bar-royalty');
+            
+            // Access CSS variables
+            const sookTeal = getComputedStyle(document.documentElement).getPropertyValue('--sook-teal').trim();
+
+            // --- Animation Constants ---
+            // 1x revenue bar (Fixed Fee) height is 20px
+            // 25x revenue bar (Royalty) should be 500px tall (20px * 25)
+            const baseHeightPx = 20;
+            const targetRoyaltyHeightPx = 500; 
+
+            // Set initial styles for animation
+            gsap.set(barFixed, { height: `${baseHeightPx}px` }); 
+            gsap.set(barRoyalty, { height: `${baseHeightPx}px` }); // Royalty bar starts small
+
+            // GSAP Timeline for the "WOW" effect
+            const tl = gsap.timeline({ defaults: { duration: 1.5 } });
+
+            // Bar Growth Animation (Accurate Height and Stays Visible)
+            tl.to(barRoyalty, {
+                height: `${targetRoyaltyHeightPx}px`, // Target 500px to represent 25x accurately
+                backgroundColor: sookTeal, // Use Teal color variable for animation
+                boxShadow: `0 0 30px ${sookTeal}`, // Use Teal color for shadow
+                duration: 2.5,
+                ease: "bounce.out" // Use bounce ease for a dramatic stop
+            }, 0); // Start immediately (0 seconds)
+        });
+    </script>
+</body>
+</html>
