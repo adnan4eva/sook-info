@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sook Fundraising</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #1a202c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .slide {
+            background: white;
+            width: 1280px;
+            height: 720px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 120px 1fr 1fr;
+            gap: 0;
+            overflow: hidden;
+        }
+        
+        .header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #00D7FF, #00B8D4);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            margin: 5px 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .section {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section h2 {
+            color: #1a202c;
+            font-size: 1.4rem;
+            margin: 0 0 20px 0;
+            font-weight: 600;
+        }
+        
+        .funding {
+            background: #f8fafc;
+            border-left: 5px solid #00D7FF;
+            text-align: center;
+            justify-content: center;
+        }
+        
+        .funding .amount {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #00D7FF;
+            margin: 10px 0;
+        }
+        
+        .funding .details {
+            color: #4a5568;
+            font-size: 1.1rem;
+        }
+        
+        .metrics {
+            background: white;
+        }
+        
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .metric-label {
+            color: #64748b;
+        }
+        
+        .metric-value {
+            color: #1a202c;
+            font-weight: bold;
+        }
+        
+        .timeline {
+            background: #f8fafc;
+            border-left: 5px solid #E53E3E;
+        }
+        
+        .milestone {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            border-left: 3px solid #E53E3E;
+        }
+        
+        .milestone-quarter {
+            font-weight: bold;
+            color: #E53E3E;
+            font-size: 0.9rem;
+        }
+        
+        .milestone-text {
+            color: #4a5568;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .use-funds {
+            background: white;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .chart-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        
+        .runway {
+            background: linear-gradient(135deg, #00D7FF, #00B8D4);
+            color: white;
+            text-align: center;
+            justify-content: center;
+        }
+        
+        .runway-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .runway-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1>SOOK</h1>
+            <p>Raising $500K SAFE Note • 25% Discount</p>
+        </div>
+        
+        <div class="section funding">
+            <h2>Funding</h2>
+            <div class="amount">$500K</div>
+            <div class="details">SAFE Note<br>25% Discount on Valuation</div>
+        </div>
+        
+        <div class="section metrics">
+            <h2>Key Metrics</h2>
+            <div class="metric">
+                <span class="metric-label">Monthly Burn</span>
+                <span class="metric-value">~$43K</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Year 1 Revenue</span>
+                <span class="metric-value">$1.38M</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Year 1 GMV</span>
+                <span class="metric-value">$4.42M</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Break Even</span>
+                <span class="metric-value">Month 8</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Templates</span>
+                <span class="metric-value">9 Shows</span>
+            </div>
+        </div>
+        
+        <div class="section timeline">
+            <h2>Timeline</h2>
+            <div class="milestone">
+                <div class="milestone-quarter">M1-3</div>
+                <div class="milestone-text">Build templates & tech</div>
+            </div>
+            <div class="milestone">
+                <div class="milestone-quarter">M4-6</div>
+                <div class="milestone-text">Pilot with 3 partners</div>
+            </div>
+            <div class="milestone">
+                <div class="milestone-quarter">M7+</div>
+                <div class="milestone-text">Scale & Series A</div>
+            </div>
+        </div>
+        
+        <div class="section use-funds">
+            <h2>Use of Funds</h2>
+            <div class="chart-container">
+                <canvas id="fundsChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="section runway">
+            <h2>Runway</h2>
+            <div class="runway-number">12+</div>
+            <div class="runway-text">months to break-even</div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('fundsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Templates', 'Tech', 'Team', 'Testing', 'Ops'],
+                datasets: [{
+                    data: [30, 30, 25, 10, 5],
+                    backgroundColor: ['#00D7FF', '#1a202c', '#00B8D4', '#E53E3E', '#4A5568'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 10,
+                            padding: 8,
+                            font: { size: 10 }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
